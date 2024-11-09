@@ -40,7 +40,7 @@ public class UserService {
 
     public User findUserById(Long id) {
         Optional<User> user = userRepository.findById(id);
-        return user.orElseThrow(() -> new RuntimeException("Grade not found"));
+        return user.orElseThrow(() -> new RuntimeException("User not found"));
     }
 
     public List<User> findAllUsers() {
