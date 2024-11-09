@@ -1,4 +1,8 @@
 package com.unihack.financetracker.finance_tracker_backend.repository;
 
-public class TransactionRepository {
+import com.unihack.financetracker.finance_tracker_backend.entity.Transaction;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TransactionRepository extends JpaRepository<Transaction, Long> {
+
 }
