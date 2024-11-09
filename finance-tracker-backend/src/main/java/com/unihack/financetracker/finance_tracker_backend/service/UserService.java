@@ -1,5 +1,6 @@
 package com.unihack.financetracker.finance_tracker_backend.service;
 
+import com.unihack.financetracker.finance_tracker_backend.entity.Goal;
 import com.unihack.financetracker.finance_tracker_backend.entity.User;
 import com.unihack.financetracker.finance_tracker_backend.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -21,6 +22,20 @@ public class UserService {
 
     public User addUser(User user) {
         return userRepository.save(user);
+    }
+
+    @Transactional
+    public Goal addGoalToUser(Long userId, Goal goal) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if(userOptional.isPresent()) {
+            User user = userOptional.get();
+            goal.setUser(user);
+            user.getGoals().add(goal);
+            userRepository.save(user);
+            return goal;
+        } else {
+            throw new RuntimeException("User not found with ID: " + userId);
+        }
     }
 
     public User updateUser(Long id, User user) {

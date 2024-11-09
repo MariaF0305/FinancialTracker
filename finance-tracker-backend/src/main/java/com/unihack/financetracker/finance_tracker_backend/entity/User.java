@@ -1,5 +1,6 @@
 package com.unihack.financetracker.finance_tracker_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -21,6 +22,7 @@ public class User implements Serializable {
     private Integer knowledgeLevel;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Goal> goals;
 
     public User() {
