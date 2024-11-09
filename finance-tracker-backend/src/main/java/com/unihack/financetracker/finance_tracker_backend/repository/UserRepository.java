@@ -1,7 +1,7 @@
 package com.unihack.financetracker.finance_tracker_backend.repository;
 
-import java.nio.file.attribute.UserPrincipalNotFoundException;
-import java.util.List;
+import com.unihack.financetracker.finance_tracker_backend.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository <User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 }
