@@ -56,6 +56,13 @@
 			<artifactId>hibernate-community-dialects</artifactId>
 			<version>6.5.2.Final</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.commonjava.web</groupId>
+			<artifactId>json-serialization</artifactId>
+			<version>0.5</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

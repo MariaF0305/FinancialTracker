@@ -1,12 +1,15 @@
 package com.unihack.financetracker.finance_tracker_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Table(name = "user")
 public class User implements Serializable {
     @Id
@@ -25,10 +28,14 @@ public class User implements Serializable {
     @JsonManagedReference
     private List<Goal> goals;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Transaction> transactions;
+
     public User() {
     }
 
-    public User(Long id, String firstName, String lastName, String email, String password, Double income, Integer knowledgeLevel, List<Goal> goals) {
+    public User(Long id, String firstName, String lastName, String email, String password, Double income, Integer knowledgeLevel, List<Goal> goals, List<Transaction> transactions) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -37,6 +44,7 @@ public class User implements Serializable {
         this.income = income;
         this.knowledgeLevel = knowledgeLevel;
         this.goals = goals;
+        this.transactions = transactions;
     }
 
     public Long getId() {
@@ -103,6 +111,14 @@ public class User implements Serializable {
         this.goals = goals;
     }
 
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -114,6 +130,7 @@ public class User implements Serializable {
                 ", income=" + income +
                 ", knowledgeLevel=" + knowledgeLevel +
                 ", goals=" + goals +
+                ", transactions=" + transactions +
                 '}';
     }
 }
