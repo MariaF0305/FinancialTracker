@@ -2,20 +2,129 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Transactions</title>
-    <script>
-        fetch('http://localhost:8080/user/all')
-            .then(response => response.json())
-            .then(data => {
-                // Handle the received user data
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Error fetching users:', error);
-            });
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction List</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Make sure to link to your CSS file -->
 </head>
 <body>
-
+<nav class="navbar">
+    <a class="navbar-brand" href="#">
+        <div class="icon-container">
+            <img class="icon hexagon" />
+        </div>
+        <span class="name">FinEAs</span>
+    </a>
+    <ul class="navbar-nav">
+        <li>
+            <a class="active"><img class="icon home" /><span>Home</span></a>
+        </li>
+        <li>
+            <a><img class="icon statistics" /><span>Statistics</span></a>
+        </li>
+        <li>
+            <a><img class="icon mail" /><span>Messages</span></a>
+        </li>
+        <li>
+            <a><img class="icon user" /><span>Profile</span></a>
+        </li>
+        <li>
+            <a><img class="icon file" /><span>Documents</span></a>
+        </li>
+    </ul>
+    <div class="navbar-footer">
+        <img class="image-documents" src="https://ozcanzaferayan.github.io/financial-crm/img/documents.svg" alt="documents" />
+        <div class="container">
+            <h2>PDF Report</h2>
+            <span>Annual detailed report</span>
+            <a href="#" download>Download</a>
+        </div>
+    </div>
+</nav>
+<main>
+    <h1>Transaction List</h1>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>T001</td>
+            <td>$200.00</td>
+            <td>Income</td>
+            <td>Salary</td>
+            <td>2024-10-01</td>
+        </tr>
+        <tr>
+            <td>T002</td>
+            <td>$45.50</td>
+            <td>Expense</td>
+            <td>Groceries</td>
+            <td>2024-10-02</td>
+        </tr>
+        <tr>
+            <td>T003</td>
+            <td>$120.00</td>
+            <td>Income</td>
+            <td>Freelance</td>
+            <td>2024-10-03</td>
+        </tr>
+        <tr>
+            <td>T004</td>
+            <td>$32.00</td>
+            <td>Expense</td>
+            <td>Dining</td>
+            <td>2024-10-05</td>
+        </tr>
+        <tr>
+            <td>T005</td>
+            <td>$75.00</td>
+            <td>Expense</td>
+            <td>Utilities</td>
+            <td>2024-10-06</td>
+        </tr>
+        <tr>
+            <td>T006</td>
+            <td>$300.00</td>
+            <td>Income</td>
+            <td>Investment</td>
+            <td>2024-10-07</td>
+        </tr>
+        <tr>
+            <td>T007</td>
+            <td>$150.00</td>
+            <td>Expense</td>
+            <td>Car Maintenance</td>
+            <td>2024-10-08</td>
+        </tr>
+        <tr>
+            <td>T008</td>
+            <td>$40.00</td>
+            <td>Expense</td>
+            <td>Entertainment</td>
+            <td>2024-10-10</td>
+        </tr>
+        <tr>
+            <td>T009</td>
+            <td>$500.00</td>
+            <td>Income</td>
+            <td>Bonus</td>
+            <td>2024-10-15</td>
+        </tr>
+        <tr>
+            <td>T010</td>
+            <td>$90.00</td>
+            <td>Expense</td>
+            <td>Shopping</td>
+            <td>2024-10-17</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
 </body>
 </html>
