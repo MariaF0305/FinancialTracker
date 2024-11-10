@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Quiz</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">
+            <div class="icon-container">
+                <img class="icon hexagon" />
+            </div>
+            <span class="name">FinEAs</span>
+        </a>
+        <ul class="navbar-nav">
+            <li>
+                <a class="active"><img class="icon home" /><span>Home</span></a>
+            </li>
+            <li>
+                <a><img class="icon statistics" /><span>Statistics</span></a>
+            </li>
+            <li>
+                <a><img class="icon mail" /><span>Messages</span></a>
+            </li>
+            <li>
+                <a><img class="icon user" /><span>Profile</span></a>
+            </li>
+            <li>
+                <a><img class="icon file" /><span>Documents</span></a>
+            </li>
+        </ul>
+        <div class="navbar-footer">
+            <img class="image-documents" src="https://ozcanzaferayan.github.io/financial-crm/img/documents.svg" alt="documents" />
+            <div class="container">
+                <h2>PDF Report</h2>
+                <span>Annual detailed report</span>
+                <a href="#" download>Download</a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="learning-elements">
+            <h3>Test Your Financial Knowledge</h3>
+            <div class="">
+            <ul>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const questions = [
+                {
+                question: "What is a budget?",
+                options: [
+                { text: "A plan for saving and spending money", value: "a" },
+                { text: "A type of investment", value: "b" },
+                { text: "A loan from a bank", value: "c" }
+                ],
+                correctAnswer: "a"
+                },
+                {
+                question: "What is interest?",
+                options: [
+                { text: "The cost of borrowing money", value: "a" },
+                { text: "A type of savings account", value: "b" },
+                { text: "A financial advisor", value: "c" }
+                ],
+                correctAnswer: "a"
+                },
+                {
+                question: "What is a credit score?",
+                options: [
+                { text: "A measure of your income", value: "a" },
+                { text: "A score that determines how trustworthy you are with credit", value: "b" },
+                { text: "A ranking of your investments", value: "c" }
+                ],
+                correctAnswer: "b"
+                },
+                {
+                question: "What is an emergency fund?",
+                options: [
+                { text: "Money set aside for large purchases", value: "a" },
+                { text: "Money saved to cover unexpected expenses", value: "b" },
+                { text: "Money invested in stocks", value: "c" }
+                ],
+                correctAnswer: "b"
+                },
+                {
+                question: "What is the main benefit of investing in stocks?",
+                options: [
+                { text: "Guaranteed returns", value: "a" },
+                { text: "Potential for high returns over time", value: "b" },
+                { text: "Tax-free income", value: "c" }
+                ],
+                correctAnswer: "b"
+                },
+                {
+                question: "What is the difference between a savings account and a checking account?",
+                options: [
+                { text: "Savings accounts typically offer higher interest rates, while checking accounts are used for everyday transactions", value: "a" },
+                { text: "Checking accounts are for long-term savings", value: "b" },
+                { text: "There is no difference", value: "c" }
+                ],
+                correctAnswer: "a"
+                },
+                {
+                question: "What does it mean to diversify your investments?",
+                options: [
+                { text: "Invest all your money in one stock", value: "a" },
+                { text: "Spread your investments across different types of assets to reduce risk", value: "b" },
+                { text: "Only invest in bonds", value: "c" }
+                ],
+                correctAnswer: "b"
+                },
+                {
+                question: "What is a 401(k)?",
+                options: [
+                { text: "A type of credit card", value: "a" },
+                { text: "A retirement savings plan offered by an employer", value: "b" },
+                { text: "A short-term loan from a bank", value: "c" }
+                ],
+                correctAnswer: "b"
+                },
+                {
+                question: "What is the main purpose of insurance?",
+                options: [
+                { text: "To protect against financial loss due to accidents, health issues, or disasters", value: "a" },
+                { text: "To make money on your investment", value: "b" },
+                { text: "To avoid paying taxes", value: "c" }
+                ],
+                correctAnswer: "a"
+                },
+                {
+                question: "What does 'living paycheck to paycheck' mean?",
+                options: [
+                { text: "You save a lot of money each month", value: "a" },
+                { text: "You rely on each paycheck to cover your living expenses without saving", value: "b" },
+                { text: "You invest most of your money in stocks", value: "c" }
+                ],
+                correctAnswer: "b"
+                }
+                ];
+
+                function getRandomQuestions(questions, num) {
+                const shuffled = questions.sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, num);
+                }
+
+                const selectedQuestions = getRandomQuestions(questions, 4);
+                const quizContainer = document.querySelector('.learning-elements ul');
+                selectedQuestions.forEach((q, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<p>Question ${index + 1}: ${q.question}</p>`;
+                q.options.forEach(option => {
+                li.innerHTML += `<input type="radio" name="q${index + 1}" value="${option.value}"> ${option.text}<br>`;
+                });
+                quizContainer.appendChild(li);
+                });
+
+                window.submitQuiz = function() {
+                let score = 0;
+                selectedQuestions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="q${index + 1}"]:checked`);
+                if (selectedOption && selectedOption.value === q.correctAnswer) {
+                score++;
+                }
+                });
+                quizContainer.innerHTML = `<p>Quiz submitted! Your score is ${score}/${selectedQuestions.length}</p>`;
+                const submitButton = document.querySelector('.learning-elements button'); 
+                submitButton.style.display = 'none';
+                const retryButton = document.createElement('button');
+                retryButton.textContent = 'Retry';
+                retryButton.onclick = function() {
+                location.reload();
+                };
+                quizContainer.appendChild(retryButton);
+               
+                };
+            });
+            </script>
+            </ul>
+            <button onclick="submitQuiz()">Submit</button>
+        </div>
+    </main>
+</body>
+</html>
