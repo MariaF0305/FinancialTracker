@@ -1,9 +1,7 @@
 package com.unihack.financetracker.finance_tracker_backend.controller;
 
-import com.unihack.financetracker.finance_tracker_backend.entity.Goal;
 import com.unihack.financetracker.finance_tracker_backend.entity.User;
 import com.unihack.financetracker.finance_tracker_backend.service.UserService;
-import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
